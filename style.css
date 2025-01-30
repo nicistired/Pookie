@@ -1,0 +1,74 @@
+body {
+    background: #fff url('images/pixel-heart-pattern.png') repeat center center; /* White background with repeating heart pattern */
+}
+
+.frame {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the frame */
+    width: 800px; /* Set the width to 800px for a larger frame */
+    height: 800px; /* Set the height to 800px for a larger frame */
+    border: 30px solid #000000; /* Optional: add a border around the frame */
+    overflow: hidden; /* Hide anything outside the frame */
+}
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center horizontally and vertically inside the frame */
+    width: 1600px; /* Increase the container size to accommodate the larger elements */
+    height: 1200px; /* Increase the height */
+    display: flex;
+    justify-content: space-evenly; /* Evenly space characters */
+    align-items: flex-end; /* Align them to the bottom */
+}
+
+.character {
+    width: 600px; /* Make the characters 2x bigger */
+    height: auto; /* Maintain the aspect ratio */
+    position: absolute;
+    bottom: 180px; /* Adjust bottom for bigger characters */
+    z-index: 2;
+    transition: transform 1s ease;
+}
+
+#me {
+    left: 50px; /* Adjust the position */
+    transform: translateX(0); /* Keep in place */
+}
+
+#her {
+    right: 50px; /* Adjust the position */
+    transform: translateX(0); /* Keep in place */
+}
+
+.cat {
+    width: 300px; /* Increase the size of the cat to match the characters */
+    position: absolute;
+    bottom: 180px; /* Align the cat with the bottom of the images */
+    left: 42.5%; /* Center horizontally between you two */
+    transform: translateX(-50%);
+    opacity: 0;
+    z-index: 1;
+    animation: floatCat 2s ease-in-out infinite;
+}
+
+.message {
+    font-family: 'Dancing Script', cursive;
+    font-size: 100px; /* Make the font 2x bigger */
+    color: #000000;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    position: absolute;
+    top: 50px; /* Adjust to position the text higher */
+    width: 100%;
+    opacity: 0;
+}
+
+@keyframes floatCat {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
