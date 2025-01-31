@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log("Message Opacity: ", message.style.opacity); // Log opacity
 
         // Update the gif source
-        noGif.src = gifs[gifIndex];
+        noGif.style.backgroundImage = `url(${gifs[gifIndex]})`;
         gifIndex = (gifIndex + 1) % gifs.length;
 
         // Change the prompt and button text
