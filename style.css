@@ -1,134 +1,138 @@
 body {
     margin: 0;
     padding: 0;
-    background: #fff url('images/pixel-heart-pattern.png') repeat center center;
+    background: #FFEBEE;
+    font-family: 'Patrick Hand', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Full height of the viewport */
-}
-
-.frame {
+    flex-direction: column;
+    height: 100vh;
     position: relative;
-    width: 80%;  /* Flexible width */
-    height: 80%;  /* Flexible height */
-    max-width: 800px;  /* Maximum width */
-    max-height: 800px; /* Maximum height */
-    border: 5px solid #000;
-    overflow: hidden;
-    display: flex;
-    justify-content: center; /* Center the container */
-    align-items: flex-end;
 }
 
 .container {
+    text-align: center;
+    position: relative;
+    width: 100%;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 20px;
+    border-radius: 25px;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    width: 45%; /* Adjust width for closer buttons */
+    max-width: 150px;
+}
+
+button:hover {
+    background-color: #FF4F5D;
+    color: white;
+}
+
+/* Buttons container */
+.button-container {
     position: absolute;
-    width: 100%;  /* Ensure it takes full width */
-    height: 100%;  /* Ensure it takes full height */
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
-    justify-content: space-evenly;
-    align-items: flex-end; /* Align characters at the bottom */
+    justify-content: space-between;
+    width: 50%; /* Buttons should be 50% apart */
+    z-index: 2;
+}
+
+#questionText {
+    font-size: 2em;
+    margin-bottom: 20px;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+#imageContainer {
+    display: flex;
+    justify-content: center; /* Align images horizontally in the center */
+    align-items: flex-end; /* Align them at the bottom */
+    position: fixed; /* Keep the container fixed at the bottom */
+    bottom: 0; /* Position at the bottom */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    width: 100%; /* Make sure it takes full width */
+    height: auto; /* Ensure it's flexible with content height */
 }
 
 .character {
-    width: 30%; /* Make characters smaller on mobile */
     height: auto;
-    position: absolute;
-    bottom: 20%; /* Keep space from the bottom */
-    transition: transform 1s ease;
+    margin: 0 10px; /* Adjust spacing between images */
 }
 
 #me {
-    left: 10%; /* Move "me" into frame on mobile */
-    transform: translateX(0);
+    width: 250px; /* Adjust the width of your image */
+    height: auto;
 }
 
 #her {
-    right: 10%; /* Move "her" into frame on mobile */
-    transform: translateX(0);
+    width: 250px; /* Adjust the width of her image */
+    height: auto;
 }
 
-.cat {
-    width: 20%;  /* Reduce the cat size even further */
+#herCat {
+    width: 130px; /* Adjust the width of the cat image */
+    height: auto;
+    margin-left: -1%; /* Slight margin to adjust position */
+}
+
+.messageGifContainer {
     position: absolute;
-    bottom: 20%;  /* Keep space from the bottom */
-    left: 41%;  /* Center the cat */
+    top: 20%; /* Place the message at a good spot above the images */
+    left: 50%;
     transform: translateX(-50%);
-    opacity: 0;
-    z-index: 1;
-    animation: floatCat 2s ease-in-out infinite;
-}
-
-.message {
-    font-family: 'Dancing Script', cursive;
-    font-size: 6vw;  /* Adjust font size to fit mobile screens */
-    color: #000;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-    text-align: center;
-    position: absolute;
-    top: 10%;
     width: 100%;
-    opacity: 0;
+    text-align: center;
+    z-index: 2;
+    font-size: 3em; /* Adjust font size as needed */
 }
 
-@keyframes floatCat {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0); }
+
+#noGif {
+    width: 250px;
+    height: auto;
+    display: block;
+    margin-top: 20px; /* Adds space between message and gif */
+    margin-left: auto;
+    margin-right: auto;
 }
 
-/* Mobile-specific styling */
-@media (max-width: 768px) {
-    .frame {
-        width: 60%; /* Use more width on mobile */
-        height: 35%; /* Use more height on mobile */
-    }
-
-    .container {
-        width: 60%;  /* Reduce container size for mobile */
-        height: 35%;  /* Make it smaller for better fit */
-    }
-
-    .character {
-        width: 25%; /* Reduce character size more on mobile */
-        bottom: 12%; /* Move characters up slightly */
-    }
-
-    .cat {
-        width: 15%;  /* Make the cat smaller */
-        bottom: 10%;  /* Adjust bottom spacing */
-    }
-
-    .message {
-        font-size: 6vw;  /* Increase the font size for readability on mobile */
-        top: 12%; /* Adjust for better alignment */
-    }
+.hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Prevent interaction */
+    overflow: hidden;
+}
+.heart {
+    position: absolute;
+    bottom: -10px;
+    animation: floatHearts 5s linear infinite;
 }
 
-/* Very small screens (optional, just in case) */
-@media (max-width: 480px) {
-    .frame {
-        width: 65%;
-        height: 45%;
+@keyframes floatHearts {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
     }
-
-    .container {
-        width: 60%;  /* Reduce container size for very small screens */
-        height: 40%;  /* Make container even smaller */
-    }
-
-    .character {
-        width: 25%; /* Further reduce character size */
-        bottom: 10%; /* Keep them from touching the bottom */
-    }
-
-    .cat {
-        width: 15%; /* Adjust cat size on very small screens */
-        bottom: 12%; /* Adjust bottom positioning */
-    }
-
-    .message {
-        font-size: 4vw;  /* Adjust text size on very small screens */
-        top: 18%; /* Adjust position for small screens */
+    100% {
+        transform: translateY(-110vh) scale(1.5);
+        opacity: 0;
     }
 }

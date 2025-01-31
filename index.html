@@ -5,19 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pookie</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
 </head>
 <body>
 
+    <div class="hearts-container"></div>
+
     <div class="container">
-        <img src="images/me.png" class="character" id="me">
-        <img src="images/her.png" class="character" id="her">
-        <img src="images/her_cat.png" class="cat" id="herCat">
+        <div class="question">
+            <p id="questionText">Will you be my Valentine? ❤️</p>
+            <div class="button-container">
+                <button class="button" id="yesButton">Yes</button>
+                <button class="button" id="noButton">No</button>
+            </div>
+        </div>
+
+        <!-- New Container for Message and GIF -->
+        <div class="messageGifContainer">
+            <div class="message" id="message"></div>
+            <img id="noGif" src="images/funny_no1.gif" style="display: none;">
+        </div>
+
+        <!-- Image Container with all the characters -->
+        <div id="imageContainer" style="display: none;">
+            <img src="images/me.png" class="character" id="me" style="display: none;">
+            <img src="images/her_cat.png" class="character" id="herCat" style="display: none;">
+            <img src="images/her.png" class="character" id="her" style="display: none;">
+        </div>
     </div>
-
-    <div class="message" id="message">Will you be my Valentine? ❤️</div>
-
-       <audio id="meow-sound" src="meow.mp3"></audio>
 
     <script src="script.js"></script>
 </body>
 </html>
+
