@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ];
 
     let noCount = 0;
-    let gifIndex = 0;
+    let gifIndex = -1;  // Start with -1 so that the first click will set it to 0
 
     // Handle Yes button click
     yesButton.addEventListener("click", () => {
@@ -52,11 +52,11 @@ document.addEventListener("DOMContentLoaded", () => {
         me.style.display = "block";
         her.style.display = "block";
         herCat.style.display = "block";
-        
+
         // Ensure the image container is visible
         const imageContainer = document.getElementById("imageContainer");
         imageContainer.style.display = "flex";  // Make sure container is visible
-        imageContainer.style.opacity = 1; 
+        imageContainer.style.opacity = 1;
     });
 
     // Floating hearts creation
@@ -83,7 +83,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     setInterval(createHeart, 500); // Generate hearts every 0.5 seconds
 
-    // Handle No button click
     noButton.addEventListener("click", () => {
         console.log("No Button Clicked");
 
@@ -91,9 +90,15 @@ document.addEventListener("DOMContentLoaded", () => {
         message.style.opacity = 1;
         console.log("Message Opacity: ", message.style.opacity); // Log opacity
 
-        // Update the gif source
-        noGif.style.backgroundImage = `url(${gifs[gifIndex]})`;
-        gifIndex = (gifIndex + 1) % gifs.length;
+        // Fade out the current gif
+        noGif.style.opacity = 0;
+
+        // Update the gif source immediately (no delay for the transition)
+        gifIndex = (gifIndex + 1) % gifs.length; // Cycle through the gifs array
+        noGif.src = gifs[gifIndex]; // Use src instead of backgroundImage
+
+        // Fade the gif back in immediately after update
+        noGif.style.opacity = 1;
 
         // Change the prompt and button text
         if (noCount < prompts.length) {

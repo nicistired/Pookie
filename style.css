@@ -101,15 +101,21 @@ button:hover {
     font-size: 3em; /* Adjust font size as needed */
 }
 
-
 #noGif {
+    display: none; /* Initially hide the gif */
+    transition: opacity 0.5s ease;
+    opacity: 1;
     width: 250px;
     height: auto;
-    display: block;
-    margin-top: 20px; /* Adds space between message and gif */
+    margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
+    background-size: cover; /* Ensure the background image covers the element */
+    background-position: center;
 }
+
+
+
 
 .hearts-container {
     position: fixed;
